@@ -1,0 +1,36 @@
+{
+  "entities": {
+    "Order": {
+      "title": "Order",
+      "description": "Drink order from a customer",
+      "type": "object",
+      "properties": {
+        "customerName": { "type": "string" },
+        "items": { "type": "array" },
+        "total": { "type": "number" },
+        "status": { "type": "string", "enum": ["pending", "completed", "cancelled"] },
+        "createdAt": { "type": "number" }
+      },
+      "required": ["customerName", "items", "total", "status", "createdAt"]
+    },
+    "AdminSettings": {
+      "title": "AdminSettings",
+      "description": "Admin configuration containing the hashed or plaintext password",
+      "type": "object",
+      "properties": {
+        "password": { "type": "string" }
+      },
+      "required": ["password"]
+    }
+  },
+  "firestore": {
+    "/orders/{orderId}": {
+      "schema": { "$ref": "#/entities/Order" },
+      "description": "Orders placed by customers"
+    },
+    "/settings/admin": {
+      "schema": { "$ref": "#/entities/AdminSettings" },
+      "description": "Base settings for admin configuration"
+    }
+  }
+}
