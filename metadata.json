@@ -1,0 +1,6 @@
+{
+  "name": "茶飲點單系統",
+  "description": "提供前台點餐與後台訂單管理，資料儲存於 Firebase，具備簡易密碼驗證。",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
