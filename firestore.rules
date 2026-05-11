@@ -1,0 +1,17 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      // Default deny to prevent unintended access
+      allow read, write: if false;
+    }
+    match /orders/{orderId} {
+      // Unauthenticated access required by prompt
+      allow read, write: if true;
+    }
+    match /settings/{docId} {
+      // Unauthenticated access required by prompt
+      allow read, write: if true;
+    }
+  }
+}
